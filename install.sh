@@ -23,7 +23,7 @@ code libreoffice-fresh keepassxc virtualbox xfce4-terminal || { echo "Error : $@
 
 # LibreWolf (AUR if yay is installed)
 if command -v yay &> /dev/null; then
-    yay -S --noconfirm librewolf-bin || { echo "Error : $@"; exit 1; }
+    sudo -u "$user" yay -S --noconfirm librewolf-bin || { echo "Error installing librewolf-bin"; exit 1; }
 fi
 
 # Background (missing implementation)
