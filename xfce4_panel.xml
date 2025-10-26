@@ -135,8 +135,6 @@
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-26" type="string" value="separator"/>
-      <property name="style" type="uint" value="0"/>
-    </property>
     <property name="plugin-29" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
       <property name="expand" type="bool" value="false"/>
