@@ -15,16 +15,16 @@ USER_HOME="/home/$user"
 XFCE_TEMPLATE_DIR="/usr/share/xfce4/default-config"
 localectl set-x11-keymap fr
 
-# Install - (add code, libreoffice, librewolf-bin, keepassxc, virtualbox)
-pacman -Sy --noconfirm xfce4 materia-gtk-theme papirus-icon-theme lightdm lightdm-gtk-greeter network-manager-applet pavucontrol xfce4-screenshooter \
+# Install - (add code, libreoffice keepassxc, virtualbox)
+pacman -Sy --needed --noconfirm xfce4 materia-gtk-theme papirus-icon-theme lightdm lightdm-gtk-greeter network-manager-applet pavucontrol xfce4-screenshooter \
 xfce4-taskmanager xfce4-power-manager file-roller thunar-archive-plugin mousepad ristretto evince xfce4-systemload-plugin xfce4-screensaver \
 xfce4-wavelan-plugin xfce4-weather-plugin xfce4-pulseaudio-plugin xfce4-battery-plugin plank ttf-jetbrains-mono-nerd noto-fonts-emoji \
 code libreoffice-fresh keepassxc virtualbox xfce4-terminal || { echo "Error : $@"; exit 1; }
 
-# LibreWolf (AUR if yay is installed)
-if command -v yay &> /dev/null; then
-    sudo -u "$user" yay -S --noconfirm librewolf-bin || { echo "Error installing librewolf-bin"; exit 1; }
-fi
+# LibreWolf (AUR if yay is installed) - commented out for now
+# if command -v yay &> /dev/null; then
+#     sudo -u "$user" yay -S --needed --noconfirm librewolf-bin || { echo "Error installing librewolf-bin"; exit 1; }
+# fi
 
 # Background (missing implementation)
 mkdir -p /usr/share/backgrounds
