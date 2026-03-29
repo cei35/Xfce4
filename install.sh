@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$(id -u)" -ne 0 ]; then
+if [ $EUID -ne 0 ]; then
     echo "This script must be run as root."
     exit 1
 fi
@@ -21,10 +21,10 @@ xfce4-taskmanager xfce4-power-manager file-roller thunar-archive-plugin mousepad
 xfce4-wavelan-plugin xfce4-weather-plugin xfce4-pulseaudio-plugin xfce4-battery-plugin plank ttf-jetbrains-mono-nerd noto-fonts-emoji \
 code libreoffice-fresh keepassxc virtualbox xfce4-terminal || { echo "Error : $@"; exit 1; }
 
-# LibreWolf (AUR if yay is installed) - commented out for now
-# if command -v yay &> /dev/null; then
-#     sudo -u "$user" yay -S --needed --noconfirm librewolf-bin || { echo "Error installing librewolf-bin"; exit 1; }
-# fi
+# LibreWolf (AUR if yay is installed)
+if command -v yay &> /dev/null; then
+    sudo -u "$user" yay -S --needed --noconfirm librewolf-bin || { echo "Error installing librewolf-bin"; exit 1; }
+fi
 
 # Background (missing implementation)
 mkdir -p /usr/share/backgrounds

@@ -188,7 +188,7 @@
       <property name="&lt;Super&gt;Right" type="string" value="tile_right_key"/>
       <property name="&lt;Super&gt;Up" type="string" value="tile_up_key"/>
       <property name="&lt;Super&gt;Down" type="string" value="tile_down_key"/>
-      <property name="&lt;Super&gt;L" type="string" value="xflock"/>
+      <property name="&lt;Super&gt;L" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;D" type="string" value="show_desktop_key"/>
     </property>
   </property>
