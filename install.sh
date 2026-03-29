@@ -5,13 +5,14 @@ if [ $EUID -ne 0 ]; then
     exit 1
 fi
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <user>"
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <main_user> <privileged_user>"
     exit 1
 fi
 
-user="$1"
-USER_HOME="/home/$user"
+main_user="$1"
+privileged_user="$2"
+USER_HOME="/home/$main_user"
 XFCE_TEMPLATE_DIR="/usr/share/xfce4/default-config"
 localectl set-x11-keymap fr
 
@@ -23,7 +24,7 @@ code libreoffice-fresh keepassxc virtualbox xfce4-terminal || { echo "Error : $@
 
 # LibreWolf (AUR if yay is installed)
 if command -v yay &> /dev/null; then
-    sudo -u "$user" yay -S --needed --noconfirm librewolf-bin || { echo "Error installing librewolf-bin"; exit 1; }
+    sudo -u "$privileged_user" yay -S --needed --noconfirm librewolf-bin
 fi
 
 # Background (missing implementation)
@@ -92,7 +93,7 @@ systemctl enable lightdm
 
 # Create user config dir
 mkdir -p "$USER_HOME/.config/xfce4"
-chown -R "$user:$user" "$USER_HOME/.config/xfce4"
+chown -R "$main_user:$main_user" "$USER_HOME/.config/xfce4"
 
-chown -R "$user:$user" "$USER_HOME/.config"
-chown -R "$user:$user" "$USER_HOME/.cache"
+chown -R "$main_user:$main_user" "$USER_HOME/.config"
+chown -R "$main_user:$main_user" "$USER_HOME/.cache"
